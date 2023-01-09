@@ -43,12 +43,12 @@ const ModalBody = ({
           center>
           <Image source={CloseModal} style={styles.close} />
           <Box absolute right={14} top={5}>
-            <TemplateIcon size={26} family="Feather" name="x" color={PRIMARY} />
+            <TemplateIcon size={26} name="CloseIcon" color={PRIMARY} />
           </Box>
         </Box>
         <Box>{children}</Box>
       </Box>
-      <KeyboardSpacer keyboardOffset={keyboardOffset} />
+      {/* <KeyboardSpacer keyboardOffset={keyboardOffset} iosOnly /> */}
     </Box>
   </Modal>
 );

@@ -1,11 +1,13 @@
 export const WHITE = '#ffffff';
 export const BLACK = '#000000';
-export const PRIMARY = '#9D68C6';
+export const PRIMARY = '#84A98C';
+// export const PRIMARY = '#9D68C6';
 export const PRIMARY_LIGHT = '#AE9AD7';
 export const PRIMARY_DARK = '#6637B6';
 export const YELLOW = '#FAE079';
 export const YARN_BLUE = '#3E7A9C';
-export const YARN_LIGHT_BLUE = '#BDCFE8';
+// export const YARN_LIGHT_BLUE = '#BDCFE8';
+export const YARN_LIGHT_BLUE = '#cad2c5';
 export const GREY = '#50514F';
 export const YARN_ORANGE = '#FC9700';
 export const YARN_RED = '#AD0000';

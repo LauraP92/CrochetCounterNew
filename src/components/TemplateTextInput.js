@@ -25,44 +25,44 @@ export default ({
   heigth,
   ...restProps
 }) => {
-  let fontFamily = 'Montserrat-Regular';
+  // let fontFamily = 'Montserrat-Regular';
 
-  if (italic) {
-    fontFamily = 'Montserrat-RegularItalic';
-  }
-  if (light) {
-    fontFamily = 'Montserrat-Light';
-  }
-  if (lightItalic) {
-    fontFamily = 'Montserrat-LightItalic';
-  }
-  if (medium) {
-    fontFamily = 'Montserrat-Medium';
-  }
-  if (mediumItalic) {
-    fontFamily = 'Montserrat-MediumItalic';
-  }
-  if (semibold) {
-    fontFamily = 'Montserrat-Semibold';
-  }
-  if (semiboldItalic) {
-    fontFamily = 'Montserrat-SemiboldItalic';
-  }
-  if (bold) {
-    fontFamily = 'Montserrat-Bold';
-  }
-  if (boldItalic) {
-    fontFamily = 'Montserrat-BoldItalic';
-  }
-  if (heavy) {
-    fontFamily = 'Montserrat-Heavy';
-  }
-  if (heavyItalic) {
-    fontFamily = 'Montserrat-HeavyItalic';
-  }
-  if (regularG) {
-    fontFamily = 'Gluten-Regular';
-  }
+  // if (italic) {
+  //   fontFamily = 'Montserrat-RegularItalic';
+  // }
+  // if (light) {
+  //   fontFamily = 'Montserrat-Light';
+  // }
+  // if (lightItalic) {
+  //   fontFamily = 'Montserrat-LightItalic';
+  // }
+  // if (medium) {
+  //   fontFamily = 'Montserrat-Medium';
+  // }
+  // if (mediumItalic) {
+  //   fontFamily = 'Montserrat-MediumItalic';
+  // }
+  // if (semibold) {
+  //   fontFamily = 'Montserrat-Semibold';
+  // }
+  // if (semiboldItalic) {
+  //   fontFamily = 'Montserrat-SemiboldItalic';
+  // }
+  // if (bold) {
+  //   fontFamily = 'Montserrat-Bold';
+  // }
+  // if (boldItalic) {
+  //   fontFamily = 'Montserrat-BoldItalic';
+  // }
+  // if (heavy) {
+  //   fontFamily = 'Montserrat-Heavy';
+  // }
+  // if (heavyItalic) {
+  //   fontFamily = 'Montserrat-HeavyItalic';
+  // }
+  // if (regularG) {
+  //   fontFamily = 'Gluten-Regular';
+  // }
 
   return (
     <Box
@@ -76,7 +76,8 @@ export default ({
         ref={refField}
         autoCorrect={false}
         autoComplete="off"
-        style={[{fontFamily, flex: 1, paddingHorizontal: SPACE_MEDIUM}, style]}
+        style={[{flex: 1, paddingHorizontal: SPACE_MEDIUM}, style]}
+        returnKeyType={'done'}
         {...restProps}
       />
       {!!showWarning && (

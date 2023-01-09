@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Alert} from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useState} from 'react/cjs/react.development';
@@ -7,6 +7,7 @@ import ModalBody from './ModalBody';
 import Box from './Box';
 import {
   RADIUS_SMALL,
+  SPACE_LARGE,
   SPACE_MEDIUM,
   SPACE_SMALL,
   SPACE_XSMALL,
@@ -21,16 +22,60 @@ import QuantityCircle from './QuantityCircle';
 const quantities = Array.from(Array(200).keys()).map(item => item + 1);
 
 const EditCounterModal = ({
+  showExpandButton,
   showEditCounterModal,
   setShowEditCounterModal,
   countersData,
   setCountersData,
   index,
+  navigation,
+  id,
 }) => {
   const [dataCounter, setDataCounter] = useState({
-    name: countersData?.counters[index].name,
-    rowsNumber: countersData?.counters[index].rowsNumber,
+    name: countersData?.counters[index]?.name,
+    rowsNumber: countersData?.counters[index]?.rowsNumber,
   });
+
+  const deleteCounter = () =>
+    Alert.alert('Delete counter?', '', [
+      {
+        text: 'Cancel',
+        onPress: () => setShowEditCounterModal(false),
+        style: 'cancel',
+      },
+      {
+        text: 'Delete',
+        onPress: () => {
+          const newCountersData = {...countersData};
+          newCountersData.counters.splice(index, 1);
+          setCountersData(newCountersData);
+          storeData('countersData', newCountersData);
+        },
+      },
+    ]);
+
+  const resetCounter = () =>
+    Alert.alert('Reset counter?', '', [
+      {
+        text: 'Cancel',
+        onPress: () => setShowEditCounterModal(false),
+        style: 'cancel',
+      },
+      {
+        text: 'Reset',
+        onPress: () => {
+          const newCountersData = {...countersData};
+          newCountersData.counters[index].rows =
+            dataCounter.rowsNumber === -1
+              ? [0]
+              : Array.from(Array(dataCounter.rowsNumber).keys()).map(() => 0);
+          newCountersData.counters[index].activeRow = 0;
+          setCountersData(newCountersData);
+          storeData('countersData', newCountersData);
+          setShowEditCounterModal(false);
+        },
+      },
+    ]);
 
   const storeData = async (key, value) => {
     try {
@@ -115,7 +160,6 @@ const EditCounterModal = ({
           </TemplateText>
           <TemplateTextInput
             color={BLACK}
-            // placeholder="How should we call this counter?"
             value={dataCounter.name}
             onChangeText={text => {
               setDataCounter({
@@ -176,31 +220,31 @@ const EditCounterModal = ({
           ))}
         </ScrollView>
         <Box ph={SPACE_MEDIUM}>
+          {showExpandButton ? (
+            <TemplateActionButton
+              mb={SPACE_MEDIUM}
+              onPress={() => {
+                navigation.navigate('CounterSelected', {
+                  id: id,
+                  index: index,
+                });
+                setShowEditCounterModal(false);
+              }}>
+              Open separately
+            </TemplateActionButton>
+          ) : null}
           <TemplateActionButton
             mb={SPACE_MEDIUM}
             onPress={() => {
-              const newCountersData = {...countersData};
-              newCountersData.counters.splice(index, 1);
-              setCountersData(newCountersData);
-              storeData('countersData', newCountersData);
-              setShowEditCounterModal(false);
+              navigation.goBack();
+              deleteCounter();
             }}>
             Delete counter
           </TemplateActionButton>
           <TemplateActionButton
             mb={SPACE_MEDIUM}
             onPress={() => {
-              const newCountersData = {...countersData};
-              newCountersData.counters[index].rows =
-                dataCounter.rowsNumber === -1
-                  ? [0]
-                  : Array.from(Array(dataCounter.rowsNumber).keys()).map(
-                      () => 0,
-                    );
-              newCountersData.counters[index].activeRow = 0;
-              setCountersData(newCountersData);
-              storeData('countersData', newCountersData);
-              setShowEditCounterModal(false);
+              resetCounter();
             }}>
             Reset counter
           </TemplateActionButton>
@@ -227,6 +271,5 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingVertical: SPACE_MEDIUM,
     paddingHorizontal: SPACE_MEDIUM,
-    marginBottom: SPACE_XXLARGE,
   },
 });

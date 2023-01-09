@@ -22,6 +22,7 @@ const CreateCounterModal = ({
   const [dataCounter, setDataCounter] = useState({
     name: '',
     rowsNumber: -1,
+    id: Date.now(),
   });
 
   const storeData = async (key, value) => {
@@ -41,6 +42,7 @@ const CreateCounterModal = ({
         ...countersData.counters,
         {
           ...dataCounter,
+          id: Date.now(),
           rows:
             dataCounter.rowsNumber === -1
               ? [0]
@@ -51,7 +53,6 @@ const CreateCounterModal = ({
         },
       ],
     };
-
     setCountersData(newCountersData);
     storeData('countersData', newCountersData);
 
