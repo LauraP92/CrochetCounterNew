@@ -14,29 +14,6 @@ import React, {FC, useEffect, useRef, useState} from 'react';
 //   name: TemplateIconName;
 // }
 
-// const IconList = [
-//   {
-//     name: 'PlusIcon',
-//     icon: PlusIcon,
-//   },
-//   {
-//     name: 'MinusIcon',
-//     icon: MinusIcon,
-//   },
-//   {
-//     name: 'MenuIcon',
-//     icon: MenuIcon,
-//   },
-//   {
-//     name: 'CloseIcon',
-//     icon: CloseIcon,
-//   },
-//   {
-//     name: 'AppLogoIcon',
-//     icon: AppLogoIcon,
-//   },
-// ];
-
 const IconList = {
   PlusIcon: PlusIcon,
   MinusIcon: MinusIcon,

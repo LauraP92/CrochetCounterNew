@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Box from './Box';
 import TemplateText from './TemplateText';
 import TemplateIcon from './icons/TemplateIcon';
-import {TRANSPARENT, WHITE, YARN_LIGHT_BLUE} from '../constants/COLOUR';
+import {TRANSPARENT, WHITE, YARN_LIGHT_GREEN} from '../constants/COLOUR';
 import CircleButton from './CircleButton';
 import {
   BORDER_LARGE,
@@ -89,7 +89,7 @@ const CounterCard = ({
     <Box pAll={SPACE_MEDIUM} pb={SPACE_XSMALL}>
       <Box
         pAll={SPACE_MEDIUM}
-        backgroundColor={YARN_LIGHT_BLUE}
+        backgroundColor={YARN_LIGHT_GREEN}
         aspectRatio={1.5}
         borderRadius={RADIUS_LARGE}>
         <Box center row mb={SPACE_SMALL}>

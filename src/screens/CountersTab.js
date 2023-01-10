@@ -1,7 +1,5 @@
-// import {useIsFocused} from '@react-navigation/native';
-// import firestore from '@react-native-firebase/firestore';
 import React, {useState, useEffect, useContext} from 'react';
-import {StyleSheet, RefreshControl} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Box from '../components/Box';

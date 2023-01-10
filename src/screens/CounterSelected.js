@@ -1,10 +1,9 @@
 import {StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import CounterCard from '../components/CounterCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Box from '../components/Box';
 import TemplateText from '../components/TemplateText';
-import {TRANSPARENT, WHITE, YARN_LIGHT_BLUE} from '../constants/COLOUR';
+import {TRANSPARENT, WHITE, YARN_LIGHT_GREEN} from '../constants/COLOUR';
 import {
   BORDER_LARGE,
   RADIUS_LARGE,
@@ -15,7 +14,6 @@ import {
 import TemplateIcon from '../components/icons/TemplateIcon';
 import CircleButton from '../components/CircleButton';
 import EditCounterModal from '../components/EditCounterModal';
-import {findIndex} from 'lodash';
 
 const CounterSelected = ({navigation, route}) => {
   const {id, index} = route?.params;
@@ -105,7 +103,7 @@ const CounterSelected = ({navigation, route}) => {
 
   return (
     <Box
-      backgroundColor={YARN_LIGHT_BLUE}
+      backgroundColor={YARN_LIGHT_GREEN}
       pAll={SPACE_MEDIUM}
       mt={SPACE_MEDIUM}
       mAll={SPACE_SMALL}

@@ -7,11 +7,9 @@ import ModalBody from './ModalBody';
 import Box from './Box';
 import {
   RADIUS_SMALL,
-  SPACE_LARGE,
   SPACE_MEDIUM,
   SPACE_SMALL,
   SPACE_XSMALL,
-  SPACE_XXLARGE,
 } from '../constants/LAYOUT';
 import TemplateText from './TemplateText';
 import {BLACK, GREY, LIGHT_GREY, PRIMARY} from '../constants/COLOUR';

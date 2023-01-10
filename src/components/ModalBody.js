@@ -4,7 +4,6 @@ import CloseModal from '../assets/images/CloseModal.png';
 import {BLACK, PRIMARY, WHITE} from '../constants/COLOUR';
 import {RADIUS_LARGE, SPACE_LARGE, SPACE_MEDIUM} from '../constants/LAYOUT';
 import Box from './Box';
-import KeyboardSpacer from './KeyboardSpacer';
 import TemplateIcon from './icons/TemplateIcon';
 
 const ModalBody = ({
