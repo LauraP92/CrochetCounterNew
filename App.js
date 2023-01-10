@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {StyleSheet} from 'react-native';
 import CountersTab from './src/screens/CountersTab';
@@ -16,8 +16,13 @@ import TemplateIcon from './src/components/icons/TemplateIcon';
 import {PRIMARY, WHITE} from './src/constants/COLOUR';
 import CounterSelected from './src/screens/CounterSelected';
 import Box from './src/components/Box';
+import SplashScreen from 'react-native-splash-screen';
 
 const App: () => Node = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
