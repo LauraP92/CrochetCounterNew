@@ -48,7 +48,7 @@ const EditCounterModal = ({
           newCountersData.counters.splice(index, 1);
           setCountersData(newCountersData);
           storeData('countersData', newCountersData);
-          if (showExpandButton) {
+          if (!showExpandButton) {
             navigation.goBack();
           }
         },
