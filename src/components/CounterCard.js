@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Box from './Box';
 import TemplateText from './TemplateText';
 import TemplateIcon from './icons/TemplateIcon';
-import {TRANSPARENT, WHITE, YARN_LIGHT_BLUE} from '../constants/COLOUR';
+import {TRANSPARENT, WHITE, YARN_LIGHT_GREEN} from '../constants/COLOUR';
 import CircleButton from './CircleButton';
 import {
   BORDER_LARGE,
@@ -17,7 +17,13 @@ import {
 } from '../constants/LAYOUT';
 import EditCounterModal from './EditCounterModal';
 
-const CounterCard = ({countersData, setCountersData, index}) => {
+const CounterCard = ({
+  countersData,
+  setCountersData,
+  index,
+  navigation,
+  id,
+}) => {
   const [showEditCounterModal, setShowEditCounterModal] = useState(false);
 
   const storeData = async (key, value) => {
@@ -83,7 +89,7 @@ const CounterCard = ({countersData, setCountersData, index}) => {
     <Box pAll={SPACE_MEDIUM} pb={SPACE_XSMALL}>
       <Box
         pAll={SPACE_MEDIUM}
-        backgroundColor={YARN_LIGHT_BLUE}
+        backgroundColor={YARN_LIGHT_GREEN}
         aspectRatio={1.5}
         borderRadius={RADIUS_LARGE}>
         <Box center row mb={SPACE_SMALL}>
@@ -92,15 +98,11 @@ const CounterCard = ({countersData, setCountersData, index}) => {
           </TemplateText>
           <Box
             style={styles.icon}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
             onPress={() => {
               setShowEditCounterModal(true);
             }}>
-            <TemplateIcon
-              family="Entypo"
-              name="dots-three-horizontal"
-              size={20}
-              color={WHITE}
-            />
+            <TemplateIcon name="MenuIcon" size={20} color={WHITE} />
           </Box>
         </Box>
         <Box row center mb={SPACE_SMALL} style={styles.cardCenter}>
@@ -116,14 +118,14 @@ const CounterCard = ({countersData, setCountersData, index}) => {
               backgroundColor={TRANSPARENT}
               borderWidth={4}
               borderColor={WHITE}
-              iconName="minus"
+              iconName="MinusIcon"
             />
           </Box>
           <TemplateText color={WHITE} size={28}>
-            {countersData.counters[index].rowsNumber === -1
-              ? countersData?.counters[index].activeRow + 1
-              : `${countersData?.counters[index].activeRow + 1}/${
-                  countersData?.counters[index].rows.length
+            {countersData?.counters[index]?.rowsNumber === -1
+              ? countersData?.counters[index]?.activeRow + 1
+              : `${countersData?.counters[index]?.activeRow + 1}/${
+                  countersData?.counters[index]?.rows.length
                 }`}
           </TemplateText>
           <Box
@@ -151,13 +153,13 @@ const CounterCard = ({countersData, setCountersData, index}) => {
               backgroundColor={TRANSPARENT}
               borderWidth={4}
               borderColor={WHITE}
-              iconName="minus"
+              iconName="MinusIcon"
             />
           </Box>
           <TemplateText color={WHITE} size={36}>
             {
-              countersData?.counters[index].rows[
-                countersData?.counters[index].activeRow
+              countersData?.counters[index]?.rows[
+                countersData?.counters[index]?.activeRow
               ]
             }
           </TemplateText>
@@ -179,6 +181,9 @@ const CounterCard = ({countersData, setCountersData, index}) => {
           countersData={countersData}
           setCountersData={setCountersData}
           index={index}
+          navigation={navigation}
+          id={id}
+          showExpandButton={true}
         />
       </Box>
     </Box>
@@ -196,7 +201,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     right: 5,
-    zIndex: 1,
+    zIndex: 2,
   },
   cardCenter: {
     justifyContent: 'space-between',

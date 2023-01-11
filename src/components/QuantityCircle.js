@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {GREY, LIGHT_GREY, YARN_ORANGE} from '../constants/COLOUR';
 import {SPACE_SMALL} from '../constants/LAYOUT';
 import Box from './Box';

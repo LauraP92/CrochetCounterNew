@@ -1,8 +1,6 @@
-// import {useIsFocused} from '@react-navigation/native';
 import React, {useState, useEffect, useContext} from 'react';
 import {StyleSheet} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-// import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Box from '../components/Box';
 import CircleButton from '../components/CircleButton';
@@ -12,14 +10,17 @@ import TemplateText from '../components/TemplateText';
 import {GREY} from '../constants/COLOUR';
 import {SPACE_LARGE} from '../constants/LAYOUT';
 import AuthContext from '../context/AuthContext';
+import {useIsFocused} from '@react-navigation/native';
 
-const CountersTab = () => {
+const CountersTab = ({navigation}) => {
   const [showCreateCounterModal, setShowCreateCounterModal] = useState(false);
   const [countersData, setCountersData] = useState({
     dateModified: Date.now(),
     counters: [],
   });
   const context = useContext(AuthContext);
+  const isFocused = useIsFocused();
+
   // const {userId} = context;
   // const isFocused = useIsFocused();
 
@@ -31,12 +32,22 @@ const CountersTab = () => {
   //       .get();
   //     return userCounters;
   //   };
+
   const getAsyncStorageData = async key => {
     try {
       const jsonValue = await AsyncStorage.getItem(key);
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
       // error reading value
+    }
+  };
+
+  const storeData = async (key, value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem(key, jsonValue);
+    } catch (e) {
+      // saving error
     }
   };
 
@@ -59,56 +70,26 @@ const CountersTab = () => {
   //       .then(() => {});
   //   };
 
-  const storeData = async (key, value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem(key, jsonValue);
-    } catch (e) {
-      // saving error
-    }
-  };
-
-  //   useEffect(() => {
-  //     (async () => {
-  //       if (isFocused) {
-  //         // Fetch FireBase counters
-  //         // const firebaseCounters = (
-  //         //   (await (await getFirebaseData()).docs) || []
-  //         // ).map(doc => ({...doc.data(), id: doc?.id}));
-
-  //         // Fetch async storage counters
-  //         const asyncStorageCounters = await getAsyncStorageData('countersData');
-  //         // Check latest
-  //         // const dateFirebase = firebaseCounters?.[0]?.dateModified || 0;
-  //         const dateAsyncStorage = asyncStorageCounters?.dateModified || 0;
-  //         // if (
-  //         //   !!firebaseCounters?.[0]?.counters?.length ||
-  //         //   !!asyncStorageCounters
-  //         // ) {
-  //         //   if (dateFirebase >= dateAsyncStorage) {
-  //         //     setCountersData(firebaseCounters?.[0]);
-  //         //   } else if (dateFirebase <= dateAsyncStorage) {
-  //             setCountersData(asyncStorageCounters);
-  //     //       }
-  //     //     }
-  //     //     if (dateFirebase) {
-  //     //       storeData('latestFirebaseDate', dateFirebase);
-  //     //     }
-  //     //   }
-  //     })();
-  //   }, [isFocused]);
-
   useEffect(() => {
     (async () => {
       const asyncStorageCounters = await getAsyncStorageData('countersData');
-      // const latestFirebaseDate = await getAsyncStorageData(
-      //   'latestFirebaseDate',
-      // );
-      // if (latestFirebaseDate !== asyncStorageCounters && countersData) {
-      //   saveFirebaseCounters();
-      // }
+      if (asyncStorageCounters) {
+        setCountersData(asyncStorageCounters);
+      }
     })();
-  }, []);
+  }, [isFocused]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const asyncStorageCounters = await getAsyncStorageData('countersData');
+  // const latestFirebaseDate = await getAsyncStorageData(
+  //   'latestFirebaseDate',
+  // );
+  // if (latestFirebaseDate !== asyncStorageCounters && countersData) {
+  //   saveFirebaseCounters();
+  // }
+  //   })();
+  // }, []);
 
   return (
     <Box flex>
@@ -145,9 +126,11 @@ const CountersTab = () => {
             activeRow={item?.activeRow}
             rows={item?.rows}
             index={index}
+            id={item?.id}
             timestamp={item?.timestamp}
             countersData={countersData}
             setCountersData={setCountersData}
+            navigation={navigation}
           />
         )}
       />
