@@ -169,7 +169,6 @@ const CounterSelected = ({navigation, route}) => {
           />
         </Box>
         <TemplateText color={WHITE} size={36}>
-          {/* {newCounter?.rows[newCounter?.activeRow]} */}
           {
             countersData?.counters[index]?.rows[
               countersData?.counters[index]?.activeRow

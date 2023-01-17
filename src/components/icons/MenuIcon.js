@@ -1,6 +1,5 @@
-import Svg, {Path, Rect} from 'react-native-svg';
-import {IconProps} from './IconProps';
-import React, {FC, useEffect, useRef, useState} from 'react';
+import Svg, {Rect} from 'react-native-svg';
+import React from 'react';
 
 const MenuIcon = ({color, size, style}) => {
   const ratio = 20 / 4;

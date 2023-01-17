@@ -54,74 +54,10 @@ const TemplateText = ({
     color: LIGHT_GREY,
   };
 
-  // let fontFamily = 'Montserrat-Regular';
-
-  // if (italic) {
-  //   fontFamily = 'Montserrat-RegularItalic';
-  // }
-  // if (light) {
-  //   fontFamily = 'Montserrat-Light';
-  // }
-  // if (lightItalic) {
-  //   fontFamily = 'Montserrat-LightItalic';
-  // }
-  // if (medium) {
-  //   fontFamily = 'Montserrat-Medium';
-  // }
-  // if (mediumItalic) {
-  //   fontFamily = 'Montserrat-MediumItalic';
-  // }
-  // if (semibold) {
-  //   fontFamily = 'Montserrat-Semibold';
-  // }
-  // if (semiboldItalic) {
-  //   fontFamily = 'Montserrat-SemiboldItalic';
-  // }
-  // if (bold) {
-  //   fontFamily = 'Montserrat-Bold';
-  // }
-  // if (boldItalic) {
-  //   fontFamily = 'Montserrat-BoldItalic';
-  // }
-  // if (heavy) {
-  //   fontFamily = 'Montserrat-Heavy';
-  // }
-  // if (heavyItalic) {
-  //   fontFamily = 'Montserrat-HeavyItalic';
-  // }
-  // if (regularG) {
-  //   fontFamily = 'Gluten-Regular';
-  // }
-  // if (mediumG) {
-  //   fontFamily = 'Gluten-Medium';
-  // }
-  // if (blackG) {
-  //   fontFamily = 'Gluten-Black';
-  // }
-  // if (boldG) {
-  //   fontFamily = 'Gluten-Bold';
-  // }
-  // if (extraboldG) {
-  //   fontFamily = 'Gluten-ExtraBold';
-  // }
-  // if (extralightG) {
-  //   fontFamily = 'Gluten-ExtraLight';
-  // }
-  // if (lightG) {
-  //   fontFamily = 'Gluten-Light';
-  // }
-  // if (semiboldG) {
-  //   fontFamily = 'Gluten-SemiBold';
-  // }
-  // if (thinG) {
-  //   fontFamily = 'Gluten-Thin';
-  // }
-
   return (
     <Text
       style={[
         {...defaults},
-        // {fontFamily},
         !!mAll && {margin: mAll},
         !!mt && {marginTop: mt},
         !!mb && {marginBottom: mb},

@@ -1,6 +1,5 @@
 import Svg, {Path} from 'react-native-svg';
-import {IconProps} from './IconProps';
-import React, {FC, useEffect, useRef, useState} from 'react';
+import React from 'react';
 
 const PlusIcon = ({color, size, style}) => {
   const ratio = 33 / 33;
