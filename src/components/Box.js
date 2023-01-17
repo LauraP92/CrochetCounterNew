@@ -2,8 +2,6 @@ import React from 'react';
 import {TouchableOpacity, View, StyleSheet, Animated} from 'react-native';
 import {PRIMARY} from '../constants/COLOUR';
 import {IS_ANDROID} from '../constants/LAYOUT';
-// import LinearGradient from 'react-native-linear-gradient';
-// import {GRADIENT_END, GRADIENT_START, PRIMARY} from '../constants/COLOUR';
 import SHADOW from '../constants/SHADOW';
 
 const Box = ({
@@ -144,17 +142,6 @@ const Box = ({
       activeOpacity={activeOpacity || 1}
       disabled={disabled}
       {...restProps}>
-      {/* {!IS_ANDROID && (shadow || lightShadow) && (
-                <View
-                    style={[styles.overlay, SHADOW({ type: 'lightCard', backgroundColor: backgroundColor || PRIMARY }),
-                        !!radius && { borderRadius: radius },
-                        !!borderBottomLeftRadius && { borderBottomLeftRadius },
-                        !!borderBottomRightRadius && { borderBottomRightRadius },
-                        !!borderTopLeftRadius && { borderTopLeftRadius },
-                        !!borderTopRightRadius && { borderTopRightRadius },
-                    ]}
-                />
-            )} */}
       {!IS_ANDROID && (shadow || darkShadow) && (
         <View
           style={[
@@ -168,21 +155,7 @@ const Box = ({
           ]}
         />
       )}
-      {/* {(hGradient || vGradient) && (
-                <LinearGradient
-                    start={{ x: gradientStartBalance || 0, y: gradientStartBalance || 0 }}
-                    end={hGradient ? { x: gradientEndBalance || 1, y: 0 } : { x: 0, y: gradientEndBalance || 1 }}
-                    style={[
-                        styles.overlay,
-                        !!radius && { borderRadius: radius },
-                        !!borderBottomLeftRadius && { borderBottomLeftRadius },
-                        !!borderBottomRightRadius && { borderBottomRightRadius },
-                        !!borderTopLeftRadius && { borderTopLeftRadius },
-                        !!borderTopRightRadius && { borderTopRightRadius },
-                    ]}
-                    colors={[gradientStartColor || GRADIENT_START, gradientEndColor || GRADIENT_END]}
-                />
-            )} */}
+
       {children}
     </Component>
   );

@@ -21,18 +21,6 @@ const CountersTab = ({navigation}) => {
   const context = useContext(AuthContext);
   const isFocused = useIsFocused();
 
-  // const {userId} = context;
-  // const isFocused = useIsFocused();
-
-  //   const getFirebaseData = async () => {
-  //     const userCounters = await firestore()
-  //       .collection('users')
-  //       .doc(userId)
-  //       .collection('counters')
-  //       .get();
-  //     return userCounters;
-  //   };
-
   const getAsyncStorageData = async key => {
     try {
       const jsonValue = await AsyncStorage.getItem(key);
@@ -51,25 +39,6 @@ const CountersTab = ({navigation}) => {
     }
   };
 
-  //   const saveFirebaseCounters = () => {
-  //     if (countersData?.id) {
-  //       firestore()
-  //         .collection('users')
-  //         .doc(userId)
-  //         .collection('counters')
-  //         .doc(countersData.id)
-  //         .update(countersData)
-  //         .then(() => {});
-  //       return;
-  //     }
-  //     firestore()
-  //       .collection('users')
-  //       .doc(userId)
-  //       .collection('counters')
-  //       .add(countersData)
-  //       .then(() => {});
-  //   };
-
   useEffect(() => {
     (async () => {
       const asyncStorageCounters = await getAsyncStorageData('countersData');
@@ -79,24 +48,12 @@ const CountersTab = ({navigation}) => {
     })();
   }, [isFocused]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const asyncStorageCounters = await getAsyncStorageData('countersData');
-  // const latestFirebaseDate = await getAsyncStorageData(
-  //   'latestFirebaseDate',
-  // );
-  // if (latestFirebaseDate !== asyncStorageCounters && countersData) {
-  //   saveFirebaseCounters();
-  // }
-  //   })();
-  // }, []);
-
   return (
     <Box flex>
       <FlatList
         style={styles.flatList}
         contentContainerStyle={styles.flatListContent}
-        keyExtractor={item => item?.name}
+        keyExtractor={item => item?.id}
         data={countersData?.counters || []}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (

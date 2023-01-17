@@ -1,6 +1,5 @@
 import Svg, {Path, G, Defs, ClipPath} from 'react-native-svg';
-import {IconProps} from './IconProps';
-import React, {FC, useEffect, useRef, useState} from 'react';
+import React from 'react';
 
 const AppLogoIcon = ({color, size, style}) => {
   const ratio = 121 / 42;
