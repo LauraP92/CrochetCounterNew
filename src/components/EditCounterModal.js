@@ -1,6 +1,6 @@
 import {StyleSheet, Alert} from 'react-native';
 import React from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {useState} from 'react/cjs/react.development';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ModalBody from './ModalBody';
@@ -16,8 +16,9 @@ import {BLACK, GREY, LIGHT_GREY, PRIMARY} from '../constants/COLOUR';
 import TemplateTextInput from './TemplateTextInput';
 import TemplateActionButton from './TemplateActionButton';
 import QuantityCircle from './QuantityCircle';
+import {hp} from '../utils/getResponsiveSize';
 
-const quantities = Array.from(Array(200).keys()).map(item => item + 1);
+const quantities = Array.from(Array(500).keys()).map(item => item + 1);
 
 const EditCounterModal = ({
   showExpandButton,
@@ -156,7 +157,7 @@ const EditCounterModal = ({
       }}>
       <Box>
         <Box ph={SPACE_MEDIUM}>
-          <TemplateText color={PRIMARY} center size={22} mb={SPACE_SMALL}>
+          <TemplateText color={PRIMARY} center size={hp(22)} mb={SPACE_SMALL}>
             Edit counter
           </TemplateText>
           <TemplateTextInput
@@ -171,55 +172,65 @@ const EditCounterModal = ({
           />
           <TemplateText
             color={PRIMARY}
-            size={22}
+            size={hp(22)}
             mt={SPACE_MEDIUM}
             mb={SPACE_XSMALL}>
             Number of rows:
           </TemplateText>
         </Box>
-        <ScrollView
+        <FlatList
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
           horizontal
-          showsHorizontalScrollIndicator={false}>
-          <Box
-            mb={SPACE_SMALL}
-            center
-            ph={SPACE_SMALL}
-            radius={RADIUS_SMALL}
-            borderColor={PRIMARY}
-            backgroundColor={dataCounter.rowsNumber < 0 ? PRIMARY : LIGHT_GREY}
-            borderWidth={2}
-            height={40}
-            row
-            mr={SPACE_SMALL}
-            onPress={() => {
-              setDataCounter({
-                ...dataCounter,
-                rowsNumber: -1,
-              });
-            }}>
-            <TemplateText
-              medium
-              color={dataCounter.rowsNumber < 0 ? LIGHT_GREY : GREY}>
-              I'm not sure
-            </TemplateText>
-          </Box>
-          {quantities.map(item => (
-            <QuantityCircle
-              isActive={dataCounter.rowsNumber === item}
-              key={item}
-              item={item}
-              color={PRIMARY}
-              onPress={() => {
-                setDataCounter({
-                  ...dataCounter,
-                  rowsNumber: item,
-                });
-              }}
-            />
-          ))}
-        </ScrollView>
+          showsHorizontalScrollIndicator={false}
+          data={[-1, ...quantities]}
+          keyExtractor={item => item}
+          renderItem={({item}) => {
+            if (item === -1) {
+              return (
+                <Box
+                  mb={SPACE_SMALL}
+                  center
+                  ph={SPACE_SMALL}
+                  radius={RADIUS_SMALL}
+                  borderColor={PRIMARY}
+                  backgroundColor={
+                    dataCounter.rowsNumber < 0 ? PRIMARY : LIGHT_GREY
+                  }
+                  borderWidth={hp(2)}
+                  height={hp(40)}
+                  row
+                  mr={SPACE_SMALL}
+                  onPress={() => {
+                    setDataCounter({
+                      ...dataCounter,
+                      rowsNumber: -1,
+                    });
+                  }}>
+                  <TemplateText
+                    medium
+                    color={dataCounter.rowsNumber < 0 ? LIGHT_GREY : GREY}>
+                    I'm not sure
+                  </TemplateText>
+                </Box>
+              );
+            }
+            return (
+              <QuantityCircle
+                isActive={dataCounter.rowsNumber === item}
+                key={item}
+                item={item}
+                color={PRIMARY}
+                onPress={() => {
+                  setDataCounter({
+                    ...dataCounter,
+                    rowsNumber: item,
+                  });
+                }}
+              />
+            );
+          }}
+        />
         <Box ph={SPACE_MEDIUM}>
           {showExpandButton ? (
             <TemplateActionButton

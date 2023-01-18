@@ -3,6 +3,7 @@ import {StyleSheet, Image, Modal} from 'react-native';
 import CloseModal from '../assets/images/CloseModal.png';
 import {BLACK, PRIMARY, WHITE} from '../constants/COLOUR';
 import {RADIUS_LARGE, SPACE_LARGE, SPACE_MEDIUM} from '../constants/LAYOUT';
+import {hp} from '../utils/getResponsiveSize';
 import Box from './Box';
 import TemplateIcon from './icons/TemplateIcon';
 
@@ -32,7 +33,7 @@ const ModalBody = ({
         <Box
           absolute
           right
-          top={-26}
+          top={hp(-26)}
           onPress={() => {
             setShowModal(false);
             if (onClose) {
@@ -41,13 +42,12 @@ const ModalBody = ({
           }}
           center>
           <Image source={CloseModal} style={styles.close} />
-          <Box absolute right={14} top={5}>
-            <TemplateIcon size={26} name="CloseIcon" color={PRIMARY} />
+          <Box absolute right={hp(14)} top={hp(5)}>
+            <TemplateIcon size={hp(26)} name="CloseIcon" color={PRIMARY} />
           </Box>
         </Box>
         <Box>{children}</Box>
       </Box>
-      {/* <KeyboardSpacer keyboardOffset={keyboardOffset} iosOnly /> */}
     </Box>
   </Modal>
 );
@@ -56,7 +56,7 @@ export default ModalBody;
 
 const styles = StyleSheet.create({
   close: {
-    height: 26,
+    height: hp(26),
     aspectRatio: 2.423,
   },
 });

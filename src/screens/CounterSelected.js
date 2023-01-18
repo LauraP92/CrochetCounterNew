@@ -14,6 +14,7 @@ import {
 import TemplateIcon from '../components/icons/TemplateIcon';
 import CircleButton from '../components/CircleButton';
 import EditCounterModal from '../components/EditCounterModal';
+import {hp} from '../utils/getResponsiveSize';
 
 const CounterSelected = ({navigation, route}) => {
   const {id, index} = route?.params;
@@ -109,18 +110,18 @@ const CounterSelected = ({navigation, route}) => {
       mAll={SPACE_SMALL}
       borderRadius={RADIUS_LARGE}>
       <Box center row mb={SPACE_SMALL}>
-        <TemplateText size={28}>{newCounter?.name}</TemplateText>
+        <TemplateText size={hp(28)}>{newCounter?.name}</TemplateText>
         <Box
           style={styles.icon}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+          hitSlop={{top: hp(10), bottom: hp(10), left: hp(10), right: hp(10)}}
           onPress={() => {
             setShowEditCounterModal(true);
           }}>
-          <TemplateIcon name="MenuIcon" size={20} color={WHITE} />
+          <TemplateIcon name="MenuIcon" size={hp(20)} color={WHITE} />
         </Box>
       </Box>
       <Box row center mb={SPACE_SMALL} style={styles.cardCenter}>
-        <TemplateText color={WHITE} size={28}>
+        <TemplateText color={WHITE} size={hp(28)}>
           Row:
         </TemplateText>
         <Box
@@ -128,14 +129,14 @@ const CounterSelected = ({navigation, route}) => {
             decrementRow();
           }}>
           <CircleButton
-            size={43}
+            size={hp(43)}
             backgroundColor={TRANSPARENT}
-            borderWidth={4}
+            borderWidth={hp(4)}
             borderColor={WHITE}
             iconName="MinusIcon"
           />
         </Box>
-        <TemplateText color={WHITE} size={28}>
+        <TemplateText color={WHITE} size={hp(28)}>
           {newCounter?.rowsNumber === -1
             ? newCounter?.activeRow + 1
             : `${newCounter?.activeRow + 1}/${newCounter?.rows?.length}`}
@@ -145,14 +146,14 @@ const CounterSelected = ({navigation, route}) => {
             incrementRow();
           }}>
           <CircleButton
-            size={43}
+            size={hp(43)}
             backgroundColor={TRANSPARENT}
-            borderWidth={4}
+            borderWidth={hp(4)}
             borderColor={WHITE}
           />
         </Box>
       </Box>
-      <TemplateText color={WHITE} size={28} mb={SPACE_XSMALL}>
+      <TemplateText color={WHITE} size={hp(28)} mb={SPACE_XSMALL}>
         Stitch:
       </TemplateText>
       <Box row center style={styles.cardFooter}>
@@ -161,14 +162,14 @@ const CounterSelected = ({navigation, route}) => {
             decrementStitch();
           }}>
           <CircleButton
-            size={70}
+            size={hp(70)}
             backgroundColor={TRANSPARENT}
-            borderWidth={4}
+            borderWidth={hp(4)}
             borderColor={WHITE}
             iconName="MinusIcon"
           />
         </Box>
-        <TemplateText color={WHITE} size={36}>
+        <TemplateText color={WHITE} size={hp(36)}>
           {
             countersData?.counters[index]?.rows[
               countersData?.counters[index]?.activeRow
@@ -180,9 +181,9 @@ const CounterSelected = ({navigation, route}) => {
             incrementStitch();
           }}>
           <CircleButton
-            size={70}
+            size={hp(70)}
             backgroundColor={TRANSPARENT}
-            borderWidth={BORDER_LARGE}
+            borderWidth={hp(4)}
             borderColor={WHITE}
           />
         </Box>

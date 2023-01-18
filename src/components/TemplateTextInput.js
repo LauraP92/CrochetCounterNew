@@ -2,6 +2,7 @@ import React from 'react';
 import {TextInput, StyleSheet} from 'react-native';
 import {LIGHT_GREY, PRIMARY} from '../constants/COLOUR';
 import {RADIUS_SMALL, SPACE_MEDIUM} from '../constants/LAYOUT';
+import {hp} from '../utils/getResponsiveSize';
 import Box from './Box';
 import TemplateIcon from './icons/TemplateIcon';
 
@@ -29,7 +30,7 @@ export default ({
     <Box
       borderWidth={1}
       borderColor={PRIMARY}
-      height={heigth || 46}
+      height={heigth || hp(46)}
       radius={RADIUS_SMALL}
       backgroundColor={LIGHT_GREY}
       row>
@@ -37,7 +38,11 @@ export default ({
         ref={refField}
         autoCorrect={false}
         autoComplete="off"
-        style={[{flex: 1, paddingHorizontal: SPACE_MEDIUM}, style]}
+        style={[
+          styles.input,
+          {flex: 1, paddingHorizontal: SPACE_MEDIUM},
+          style,
+        ]}
         returnKeyType={'done'}
         {...restProps}
       />
@@ -46,7 +51,7 @@ export default ({
           <TemplateIcon
             name="error-outline"
             family="MaterialIcons"
-            size={18}
+            size={hp(18)}
             color={PRIMARY}
           />
         </Box>
@@ -55,4 +60,8 @@ export default ({
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  input: {
+    fontSize: hp(14),
+  },
+});
