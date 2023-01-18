@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {LIGHT_GREY} from '../constants/COLOUR';
+import {hp} from '../utils/getResponsiveSize';
 
 const TemplateText = ({
   mAll,
@@ -50,7 +51,7 @@ const TemplateText = ({
   ...restProps
 }) => {
   const defaults = {
-    fontSize: 14,
+    fontSize: hp(14),
     color: LIGHT_GREY,
   };
 

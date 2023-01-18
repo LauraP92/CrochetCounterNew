@@ -11,11 +11,14 @@ import CircleButton from './CircleButton';
 import {
   BORDER_LARGE,
   RADIUS_LARGE,
+  SCREEN_HEIGHT,
+  SCREEN_WIDTH,
   SPACE_MEDIUM,
   SPACE_SMALL,
   SPACE_XSMALL,
 } from '../constants/LAYOUT';
 import EditCounterModal from './EditCounterModal';
+import {hp} from '../utils/getResponsiveSize';
 
 const CounterCard = ({
   countersData,
@@ -90,23 +93,22 @@ const CounterCard = ({
       <Box
         pAll={SPACE_MEDIUM}
         backgroundColor={YARN_LIGHT_GREEN}
-        aspectRatio={1.5}
         borderRadius={RADIUS_LARGE}>
         <Box center row mb={SPACE_SMALL}>
-          <TemplateText color={WHITE} size={28}>
+          <TemplateText color={WHITE} size={hp(28)}>
             {countersData?.counters[index].name}
           </TemplateText>
           <Box
             style={styles.icon}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            hitSlop={{top: hp(10), bottom: hp(10), left: hp(10), right: hp(10)}}
             onPress={() => {
               setShowEditCounterModal(true);
             }}>
-            <TemplateIcon name="MenuIcon" size={20} color={WHITE} />
+            <TemplateIcon name="MenuIcon" size={hp(20)} color={WHITE} />
           </Box>
         </Box>
         <Box row center mb={SPACE_SMALL} style={styles.cardCenter}>
-          <TemplateText color={WHITE} size={28}>
+          <TemplateText color={WHITE} size={hp(28)}>
             Row:
           </TemplateText>
           <Box
@@ -114,14 +116,14 @@ const CounterCard = ({
               decrementRow();
             }}>
             <CircleButton
-              size={43}
+              size={hp(43)}
               backgroundColor={TRANSPARENT}
-              borderWidth={4}
+              borderWidth={hp(4)}
               borderColor={WHITE}
               iconName="MinusIcon"
             />
           </Box>
-          <TemplateText color={WHITE} size={28}>
+          <TemplateText color={WHITE} size={hp(28)}>
             {countersData?.counters[index]?.rowsNumber === -1
               ? countersData?.counters[index]?.activeRow + 1
               : `${countersData?.counters[index]?.activeRow + 1}/${
@@ -133,14 +135,14 @@ const CounterCard = ({
               incrementRow();
             }}>
             <CircleButton
-              size={43}
+              size={hp(43)}
               backgroundColor={TRANSPARENT}
-              borderWidth={4}
+              borderWidth={hp(4)}
               borderColor={WHITE}
             />
           </Box>
         </Box>
-        <TemplateText color={WHITE} size={28} mb={SPACE_XSMALL}>
+        <TemplateText color={WHITE} size={hp(28)} mb={SPACE_XSMALL}>
           Stitch:
         </TemplateText>
         <Box row center style={styles.cardFooter}>
@@ -149,14 +151,14 @@ const CounterCard = ({
               decrementStitch();
             }}>
             <CircleButton
-              size={70}
+              size={hp(70)}
               backgroundColor={TRANSPARENT}
-              borderWidth={4}
+              borderWidth={hp(4)}
               borderColor={WHITE}
               iconName="MinusIcon"
             />
           </Box>
-          <TemplateText color={WHITE} size={36}>
+          <TemplateText color={WHITE} size={hp(36)}>
             {
               countersData?.counters[index]?.rows[
                 countersData?.counters[index]?.activeRow
@@ -168,9 +170,9 @@ const CounterCard = ({
               incrementStitch();
             }}>
             <CircleButton
-              size={70}
+              size={hp(70)}
               backgroundColor={TRANSPARENT}
-              borderWidth={BORDER_LARGE}
+              borderWidth={hp(4)}
               borderColor={WHITE}
             />
           </Box>
@@ -195,13 +197,13 @@ export default CounterCard;
 const styles = StyleSheet.create({
   contentContainer: {
     padding: SPACE_MEDIUM,
-    paddingBottom: 100,
+    paddingBottom: hp(100),
     borderWidth: 1,
   },
   icon: {
     position: 'absolute',
-    right: 5,
-    zIndex: 2,
+    right: hp(5),
+    zIndex: hp(2),
   },
   cardCenter: {
     justifyContent: 'space-between',

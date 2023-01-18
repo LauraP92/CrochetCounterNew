@@ -11,6 +11,7 @@ import {GREY} from '../constants/COLOUR';
 import {SPACE_LARGE} from '../constants/LAYOUT';
 import AuthContext from '../context/AuthContext';
 import {useIsFocused} from '@react-navigation/native';
+import {hp} from '../utils/getResponsiveSize';
 
 const CountersTab = ({navigation}) => {
   const [showCreateCounterModal, setShowCreateCounterModal] = useState(false);
@@ -62,10 +63,10 @@ const CountersTab = ({navigation}) => {
               color={GREY}
               mt={SPACE_LARGE}
               mb={SPACE_LARGE}
-              size={20}>
+              size={hp(20)}>
               You currently have no counters
             </TemplateText>
-            <TemplateText color={GREY} size={20} center mb={SPACE_LARGE}>
+            <TemplateText color={GREY} size={hp(20)} center mb={SPACE_LARGE}>
               Press the plus button to
               {'\n'}
               create one
@@ -121,6 +122,6 @@ const styles = StyleSheet.create({
   },
   flatListContent: {
     flexGrow: 1,
-    paddingBottom: 75,
+    paddingBottom: hp(75),
   },
 });
