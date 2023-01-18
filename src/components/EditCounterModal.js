@@ -90,7 +90,7 @@ const EditCounterModal = ({
   const editCounter = () => {
     const editCountersData = {...countersData, dateModified: Date.now()};
     editCountersData.counters[index].name =
-      dataCounter.name || `Counter ${dataCounter.name.length + 1}`;
+      dataCounter?.name || `Counter ${dataCounter?.name?.length + 1}`;
     const currentRowNumber = countersData.counters[index].rowsNumber;
     const currentRow = countersData.counters[index].rows;
 
