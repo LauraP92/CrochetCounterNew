@@ -19,7 +19,7 @@ const CounterSelected = ({navigation, route}) => {
   const {id, index} = route?.params;
   const [showEditCounterModal, setShowEditCounterModal] = useState(false);
   const [countersData, setCountersData] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
+
   const newCounter =
     !!countersData?.counters?.length &&
     countersData.counters.find(item => {
@@ -187,16 +187,19 @@ const CounterSelected = ({navigation, route}) => {
           />
         </Box>
       </Box>
-      <EditCounterModal
-        showEditCounterModal={showEditCounterModal}
-        setShowEditCounterModal={setShowEditCounterModal}
-        countersData={countersData}
-        setCountersData={setCountersData}
-        index={index}
-        id={id}
-        navigation={navigation}
-        showExpandButton={false}
-      />
+
+      {countersData ? (
+        <EditCounterModal
+          showEditCounterModal={showEditCounterModal}
+          setShowEditCounterModal={setShowEditCounterModal}
+          countersData={countersData}
+          setCountersData={setCountersData}
+          index={index}
+          id={id}
+          navigation={navigation}
+          showExpandButton={false}
+        />
+      ) : undefined}
     </Box>
   );
 };
