@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {StyleSheet} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {StyleSheet, FlatList} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Box from '../components/Box';
 import CircleButton from '../components/CircleButton';
