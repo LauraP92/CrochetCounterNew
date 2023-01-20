@@ -1,7 +1,6 @@
 import {StyleSheet, Alert} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
-import {useState} from 'react/cjs/react.development';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ModalBody from './ModalBody';
 import Box from './Box';

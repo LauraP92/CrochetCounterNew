@@ -1,7 +1,6 @@
 /* eslint-disable operator-assignment */
 import {StyleSheet} from 'react-native';
-import React from 'react';
-import {useState} from 'react/cjs/react.development';
+import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Box from './Box';
 import TemplateText from './TemplateText';
